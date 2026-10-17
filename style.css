@@ -1,0 +1,282 @@
+:root {
+  --pink: #e98da9;
+  --rose: #c75b7b;
+  --wine: #713c50;
+  --text: #624c56;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: ui-rounded, "Trebuchet MS", system-ui, sans-serif;
+  color: var(--text);
+  background: linear-gradient(
+    145deg,
+    #fff9f7,
+    #fff0f5 55%,
+    #f8edf9
+  );
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.float {
+  position: absolute;
+  bottom: -50px;
+  opacity: 0;
+  animation: rise linear infinite;
+  color: #df91a9;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+  12% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% {
+    transform: translateY(-115vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.sparkle {
+  position: absolute;
+  animation: twinkle 3s ease-in-out infinite alternate;
+  color: #d8a5b4;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 25px 14px;
+}
+
+.card {
+  width: min(650px, 100%);
+  padding: clamp(25px, 6vw, 52px);
+  text-align: center;
+  border: 1px solid #ffffffd9;
+  border-radius: 30px;
+  background: #ffffffd9;
+  box-shadow: 0 25px 80px #8e506018;
+  backdrop-filter: blur(12px);
+  animation: enter 1s ease both;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sticker {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: #fff0f4;
+  font-size: 43px;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--rose);
+}
+
+h1 {
+  font: 500 clamp(2.3rem, 8vw, 3.65rem)/1.08 Georgia, serif;
+  color: var(--wine);
+  margin: 14px 0;
+}
+
+.lead {
+  font-size: 1.04rem;
+  line-height: 1.8;
+  max-width: 490px;
+  margin: 0 auto;
+  color: #806874;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 26px 0;
+  color: #d88ca5;
+}
+
+.line::before,
+.line::after {
+  content: "";
+  height: 1px;
+  background: #f0d4de;
+  flex: 1;
+}
+
+.message {
+  background: #fff9fa;
+  border: 1px solid #f8e4eb;
+  border-radius: 20px;
+  text-align: left;
+  padding: 22px clamp(17px, 4vw, 28px);
+  line-height: 1.85;
+  color: #705562;
+}
+
+.message p {
+  margin: 0 0 13px;
+}
+
+.message p:last-child {
+  margin-bottom: 0;
+}
+
+.ask {
+  font: 500 clamp(1.6rem, 5vw, 2.15rem)/1.3 Georgia, serif;
+  color: var(--wine);
+  margin: 29px 0 8px;
+}
+
+.hint {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #9a7b88;
+  margin: 0 auto 21px;
+  max-width: 440px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 21px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:focus-visible {
+  outline: 3px solid #d95d8277;
+  outline-offset: 3px;
+}
+
+.primary {
+  background: var(--rose);
+  color: white;
+  box-shadow: 0 8px 20px #c75b7b35;
+}
+
+.primary:hover {
+  background: #b84d70;
+}
+
+.secondary {
+  background: #fff;
+  color: #805c6b;
+  border: 1px solid #efd6e0;
+}
+
+.response {
+  display: none;
+  margin-top: 19px;
+  border-radius: 18px;
+  padding: 18px;
+  background: #fff0f5;
+  line-height: 1.7;
+  color: #75475a;
+  animation: enter 0.35s ease;
+}
+
+.response.show {
+  display: block;
+}
+
+.response strong {
+  display: block;
+  font: 500 1.35rem Georgia, serif;
+  color: var(--wine);
+  margin-bottom: 5px;
+}
+
+@media (max-width: 430px) {
+  .card {
+    border-radius: 24px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
